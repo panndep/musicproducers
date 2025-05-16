@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}{{ producer.name }} - Music Producers Database{% endblock %}
+
+{% block content %}
+<article class="producer-profile">
+    <header class="profile-header">
+        <div class="profile-image" style="background-image: url('{{ url_for('static', filename='images/mafia808.jpg') }}')"></div>
+        <div class="profile-info">
+            <h1>{{ producer.name }}</h1>
+            <p class="origin">{{ producer.origin }}</p>
+            <div class="meta">
+                <span class="formation">Основан: {{ producer.formation }}</span>
+                <span class="members">Участники: {{ producer.members|join(', ') }}</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="bio-section">
+        <h2>Биография</h2>
+        <p>{{ producer.bio }}</p>
+    </section>
+
+    <div class="profile-columns">
+        <section class="popular-tracks">
+            <h2>Популярные треки</h2>
+            <ul>
+                {% for track in producer.popular_tracks %}
+                <li>{{ track }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="collaborations">
+            <h2>Сотрудничество</h2>
+            <ul>
+                {% for artist in producer.collaborations %}
+                <li>{{ artist }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+</article>
+{% endblock %}

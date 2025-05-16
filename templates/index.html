@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Music Producers Database{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h2>База данных музыкальных продюсеров</h2>
+        <p>Изучите информацию о самых влиятельных продюсерах современной музыки</p>
+    </div>
+</section>
+
+<section class="producers-grid">
+    <h2 class="section-title">Продюсеры</h2>
+
+    <div class="grid-container">
+        {% for key, producer in producers.items() %}
+        <div class="producer-card">
+            <a href="{{ url_for('producer', producer_name=key) }}">
+                <div class="producer-image"
+                    style="background-image: url('{{ url_for('static', filename='images/' + key + '.jpg') }}')"></div>
+                <h3>{{ producer.name }}</h3>
+                <p class="genres">{{ producer.genres|join(', ') }}</p>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="about">
+    <h2 class="section-title">О проекте</h2>
+    <p>Этот сайт посвящен музыкальным продюсерам, которые сформировали звучание современной хип-хоп и поп-музыки</p>
+</section>
+{% endblock %}

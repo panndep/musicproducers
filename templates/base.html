@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Producers Database - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo">PRODUCERS</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Главная</a></li>
+                    <li><a href="{{ url_for('producer', producer_name='filty') }}">Filty</a></li>
+                    <li><a href="{{ url_for('producer', producer_name='mafia808') }}">808 Mafia</a></li>
+                    <li><a href="{{ url_for('producer', producer_name='lucian') }}">Lucian</a></li>
+                    <li><a href="{{ url_for('producer', producer_name='whitearmor') }}">Whitearmor</a></li>
+                    <li><a href="{{ url_for('producer', producer_name='jetsonmade') }}">JetsonMade</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="main-footer">
+    <div class="container">
+        <p>&copy; {{ footer_text }}</p>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}{{ producer.name }} - Music Producers Database{% endblock %}
+
+{% block content %}
+<article class="producer-profile">
+    <header class="profile-header">
+        <div class="profile-image" style="background-image: url('{{ url_for('static', filename='images/jetsonmade.jpg') }}')"></div>
+        <div class="profile-info">
+            <h1>{{ producer.name }}</h1>
+            <p class="full-name">{{ producer.full_name }}</p>
+            <p class="origin">{{ producer.origin }}</p>
+            <div class="meta">
+                <span class="birth-date">Дата рождения: {{ producer.birth_date }}</span>
+                <span class="active-years">Активен: {{ producer.active_years }}</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="bio-section">
+        <h2>Биография</h2>
+        <p>{{ producer.bio }}</p>
+    </section>
+
+    <div class="profile-columns">
+        <section class="popular-tracks">
+            <h2>Популярные треки</h2>
+            <ul>
+                {% for track in producer.popular_tracks %}
+                <li>{{ track }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="collaborations">
+            <h2>Сотрудничество</h2>
+            <ul>
+                {% for artist in producer.collaborations %}
+                <li>{{ artist }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+</article>
+{% endblock %}
